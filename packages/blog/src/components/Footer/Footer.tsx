@@ -12,17 +12,11 @@ const Footer: Component = () => {
 
                     <div class="w-full md:w-1/3 lg:w-1/3 mb-4 md:mb-0">
                         <h2 class="text-lg font-bold mb-2">Contact Us</h2>
-                        <p class="leading-relaxed">1234 Some Street, Example City<br />example@example.com<br />+1 (555) 555-5555</p>
+                        <p class="leading-relaxed"><a class="text-blue-500 underline" href="mailto:natalia.tykhonravova@gmail.com">natalia.tykhonravova@gmail.com</a></p>
                     </div>
 
                 </div>
             </div>
-
-            {/* <footer class=" bg-white py-4 flex-shrink-0">
-              <div class="container mx-auto px-4 text-center">
-                <p class="text-gray-600">© 2023 My Minimalist Blog. All rights reserved.</p>
-              </div>
-            </footer> */}
         </footer>
     )
 };
