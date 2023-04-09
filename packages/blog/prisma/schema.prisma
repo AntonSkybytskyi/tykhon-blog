@@ -11,8 +11,13 @@ datasource db {
 }
 
 model Post {
-  id          String @id @default(uuid())
+  id          String   @id @default(uuid())
+  slug        String   @unique
+  thumbnail   String?
   title       String
-  slug        String @unique
   description String
+  publishedAt DateTime
+  published   Boolean? @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
