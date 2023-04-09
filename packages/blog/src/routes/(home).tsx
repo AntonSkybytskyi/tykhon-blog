@@ -12,6 +12,7 @@ export const routeData = () => {
 
 export default function Home() {
     const posts = useRouteData<typeof routeData>();
+
     return (
         <>
             <h1 class="text-3xl font-bold mb-8">Latest Posts</h1>
