@@ -2,7 +2,7 @@
   "name": "blog",
   "scripts": {
     "dev": "solid-start dev",
-    "build": "solid-start build",
+    "build": "prisma generate && solid-start build",
     "start": "solid-start start",
     "test": "echo test will be here!",
     "prisma:init": "prisma generate"
