@@ -1,0 +1,20 @@
+{
+    "name": "tykhon-blog",
+    "type": "module",
+    "scripts": {
+        "start": "lerna run start",
+        "dev": "lerna run dev -- --open",
+        "build": "lerna run build"
+    },
+    "devDependencies": {
+        "@nrwl/nx-cloud": "latest",
+        "lerna": "^6.6.1",
+        "nx": "15.9.2"
+    },
+    "engines": {
+        "node": ">=16"
+    },
+    "workspaces": [
+        "packages/*"
+    ]
+}
