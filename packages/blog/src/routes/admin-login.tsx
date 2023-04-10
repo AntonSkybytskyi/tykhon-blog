@@ -7,19 +7,14 @@ const redirectUrl = "/";
 
 export const routeData = () => {
     return createServerData$(async (_, { request }) => {
-        const admin = await getAdmin(request);
-        console.log({ admin });
-        if (admin !== null) {
-            console.log("should redirect");
-            throw redirect("/");
+        if (await getAdmin(request) !== null) {
+            return redirect("/");
         }
         return {};
     });
 };
 
 export default function AdminLogin() {
-    useRouteData<typeof routeData>();
-
     const [loggingIn, { Form }] = createServerAction$(async (form: FormData) => {
         const username = form.get("username");
         const password = form.get("password");

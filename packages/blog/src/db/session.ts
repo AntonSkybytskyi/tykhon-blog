@@ -21,14 +21,11 @@ export function getUserSession(request: Request) {
 export async function getAdmin(request: Request) {
     const session = await getUserSession(request);
     const userId = session.get("userId");
-    console.log({ userId });
 
     if (!userId || typeof userId !== "string") {
-        console.log("return null");
         return null;
     }
 
-    console.log("return id");
     return userId;
 }
 
