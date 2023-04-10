@@ -1,4 +1,4 @@
-import { Component, JSX, createEffect } from "solid-js";
+import { Component, JSX } from "solid-js";
 import { useIsRouting } from "solid-start";
 
 interface MainContentProps {

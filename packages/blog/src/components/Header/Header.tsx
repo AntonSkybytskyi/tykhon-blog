@@ -3,14 +3,14 @@ import { A, useLocation } from "solid-start";
 
 const Header: Component = () => {
     const [isMenuOpened, setIsMenuOpened] = createSignal(false);
-    const location = useLocation()
+    const location = useLocation();
 
     const onMenuClick = () => {
         setIsMenuOpened((prev) => !prev);
     };
 
     createEffect(() => {
-        location.pathname && setIsMenuOpened(false)
+        location.pathname && setIsMenuOpened(false);
     });
 
     return (
