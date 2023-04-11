@@ -8,7 +8,7 @@ const redirectUrl = "/";
 export const routeData = () => {
     return createServerData$(async (_, { request }) => {
         if (await getAdmin(request) !== null) {
-            return redirect("/");
+            return redirect(redirectUrl);
         }
         return {};
     });
@@ -19,13 +19,17 @@ export default function AdminLogin() {
         const username = form.get("username");
         const password = form.get("password");
 
+        if (typeof username !== "string" || typeof password !== "string") {
+            throw new FormError("Something went wrong");
+        }
+
         if (username !== import.meta.env.VITE_ADMIN_USERNAME || password !== import.meta.env.VITE_ADMIN_PASSWORD) {
             throw new FormError(`Username/Password combination is incorrect`, {
                 fields: { username, password },
             });
         }
 
-        return createUserSession("admin", redirectUrl);
+        return createUserSession(username, redirectUrl);
     });
 
     return (
@@ -38,15 +42,18 @@ export default function AdminLogin() {
                         </div>
                     </Show>
                     <div>
-                        <label for="email" class="block text-sm font-medium text-gray-700">
-                            Email address
+                        <label for="username" class="block text-sm font-medium text-gray-700">
+                            Username
                         </label>
                         <div class="mt-1">
-                            <input id="email" name="username" type="text" autocomplete="username" required
-                                class="appearance-none rounded-md relative block w-full px-3 py-2 border 
-                                  border-gray-300 placeholder-gray-500 text-gray-900 
-                                  focus:outline-none focus:ring-blue-500 focus:border-blue-500 
-                                  focus:z-10 sm:text-sm" />
+                            <input
+                                id="username"
+                                name="username"
+                                type="text"
+                                class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                                autocomplete="username"
+                                required
+                            />
                         </div>
                     </div>
 
@@ -55,11 +62,14 @@ export default function AdminLogin() {
                             Password
                         </label>
                         <div class="mt-1">
-                            <input id="password" name="password" type="password" autocomplete="current-password" required
-                                class="appearance-none rounded-md relative block w-full px-3 py-2 border 
-                                  border-gray-300 placeholder-gray-500 text-gray-900 
-                                  focus:outline-none focus:ring-blue-500 focus:border-blue-500 
-                                  focus:z-10 sm:text-sm" />
+                            <input
+                                id="password"
+                                name="password"
+                                type="password"
+                                class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                                autocomplete="current-password"
+                                required
+                            />
                         </div>
                     </div>
 
