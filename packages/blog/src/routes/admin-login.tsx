@@ -6,8 +6,8 @@ import { createUserSession, getAdmin } from "~/db/session";
 const redirectUrl = "/";
 
 export const routeData = () => {
-    return createServerData$(async (_, { request }) => {
-        if (await getAdmin(request) !== null) {
+    return createServerData$(async (_, { locals }) => {
+        if (locals.isAdmin) {
             return redirect(redirectUrl);
         }
         return {};

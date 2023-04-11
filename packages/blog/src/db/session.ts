@@ -26,6 +26,7 @@ export async function getAdmin(request: Request) {
         return null;
     }
 
+
     return userId;
 }
 
@@ -38,4 +39,13 @@ export async function createUserSession(userId: string, redirectTo: string) {
             "Set-Cookie": await storage.commitSession(session)
         }
     });
+}
+
+export async function logout(redirectTo: string = "/") {
+    const session = await storage.getSession();
+    return redirect(redirectTo, {
+        headers: {
+            "Set-Cookie": await storage.destroySession(session),
+        }
+    })
 }
