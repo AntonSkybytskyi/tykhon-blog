@@ -25,6 +25,21 @@ export const getPublishedPosts = () => {
     return db.post.findMany({ where: { published: true } })
 }
 
+export const togglePublished = async (slug: string) => {
+    const post = await getPostBySlug(slug);
+
+    if (!post) {
+        throw new Error("Post doesn't exists");
+    }
+    return db.post.update({
+        where: { slug },
+        data: {
+            published: !post.published,
+            publishedAt: !post.published ? new Date() : undefined
+        }
+    });
+}
+
 export const createPost = (props: CreatePost) => {
     const slug = props.title.toLowerCase().replaceAll(" ", "-")
     console.log({ slug })
