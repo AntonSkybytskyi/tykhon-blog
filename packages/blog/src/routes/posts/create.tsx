@@ -43,4 +43,4 @@ const CreatePost = () => {
     </div>
 }
 
-export default CreatePost
+export default CreatePost;

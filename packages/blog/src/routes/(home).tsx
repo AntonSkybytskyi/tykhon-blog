@@ -3,10 +3,11 @@ import { For, Show } from "solid-js";
 import { createServerData$ } from "solid-start/server";
 import PostListItem from "~/components/PostListItem/PostListItem";
 import { db } from "~/db";
+import { getPublishedPosts } from "~/db/post";
 
 export const routeData = () => {
     return createServerData$(() => {
-        return db.post.findMany()
+        return getPublishedPosts();
     })
 }
 

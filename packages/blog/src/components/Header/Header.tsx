@@ -40,8 +40,10 @@ const Header: Component = () => {
                 {/* Desktop */}
                 <div class="hidden md:flex md:items-center">
                     <A href="/" end activeClass="font-semibold" class="text-gray-500 hover:text-gray-600 px-4">Home</A>
-                    <A href="/about" end activeClass="font-semibold" class="text-gray-500 hover:text-gray-600 px-4">About</A>
+                    <A href="/about" activeClass="font-semibold" class="text-gray-500 hover:text-gray-600 px-4">About</A>
                     <Show when={true}>
+
+                        <A href={"/posts"} activeClass="font-semibold" class="text-gray-500 hover:text-gray-600 px-4">My Posts</A>
                         <Form>
                             <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Logout</button>
                         </Form>
@@ -54,7 +56,13 @@ const Header: Component = () => {
             <div class="md:hidden" classList={{ ["hidden"]: !isMenuOpened() }}>
                 <div class="px-2 pt-2 pb-3">
                     <A href="/" end activeClass="font-semibold" class="text-gray-500 hover:text-gray-600 block px-3 py-2 rounded-md text-base">Home</A>
-                    <A href="/about" end activeClass="font-semibold" class="text-gray-500 hover:text-gray-600 block px-3 py-2 rounded-md text-base">About</A>
+                    <A href="/about" activeClass="font-semibold" class="text-gray-500 hover:text-gray-600 block px-3 py-2 rounded-md text-base">About</A>
+                    <Show when={true}>
+                        <A href={"/posts"} activeClass="font-semibold" class="text-gray-500 hover:text-gray-600 block px-3 py-2 rounded-md text-base">My Posts</A>
+                        <Form class="px-3">
+                            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full">Logout</button>
+                        </Form>
+                    </Show>
                 </div>
             </div>
         </nav>

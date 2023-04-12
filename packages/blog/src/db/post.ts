@@ -17,6 +17,14 @@ interface CreatePost {
     description: string
 }
 
+export const getAllPost = () => {
+    return db.post.findMany();
+}
+
+export const getPublishedPosts = () => {
+    return db.post.findMany({ where: { published: true } })
+}
+
 export const createPost = (props: CreatePost) => {
     const slug = props.title.toLowerCase().replaceAll(" ", "-")
     console.log({ slug })
