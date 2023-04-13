@@ -359,7 +359,7 @@ const MyEditor: Component<{ content: string, onUpdate: (html: string) => void }>
                         {(instance) => <ToolbarContents editor={instance} />}
                     </Show>
                 </Toolbar>
-                <div class="bg-white overflow-y-scroll rounded-lg" ref={setContainer} />
+                <div class="bg-white overflow-y-scroll rounded-lg h-96 overflow-auto" ref={setContainer} />
             </div>
         </div>
     );

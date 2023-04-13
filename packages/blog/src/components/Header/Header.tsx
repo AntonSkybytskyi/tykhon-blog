@@ -27,7 +27,7 @@ const Header: Component = () => {
     })
 
     return (
-        <nav class="bg-white py-4 shadow sticky top-0">
+        <nav class="bg-white py-4 shadow sticky top-0 z-10">
             <div class="container mx-auto px-4 flex justify-between items-center">
                 <A href="/" class="text-lg font-semibold text-gray-800">Natalia Tykhonravova Blog</A>
                 <div class="flex md:hidden">

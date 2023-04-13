@@ -77,10 +77,11 @@ export default function Posts() {
         <div class="px-4 py-6 sm:px-0">
             <div class="flex justify-between mb-6">
                 <h1 class="text-2xl font-bold text-gray-800">Author's Posts</h1>
-
-                <A href="/posts/create" class="inline-block bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">
-                    Create New Post
-                </A>
+                <span>
+                    <A href="/posts/create" class="inline-block bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">
+                        Create New Post
+                    </A>
+                </span>
             </div>
             <div class="mt-6">
                 <div class="flex flex-col">

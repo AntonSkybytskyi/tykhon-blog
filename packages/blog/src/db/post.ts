@@ -19,11 +19,11 @@ export const togglePublished = async (slug: string) => {
         where: { slug },
         data: {
             published: !post.published,
-            publishedAt: !post.published ? new Date() : undefined
+            publishedAt: !post.published ? new Date() : null
         }
     });
 }
-type PostCreation = Pick<Post, "title" | "description" | "slug" | "thumbnail">
+type PostCreation = Pick<Post, "title" | "description" | "slug" | "thumbnail" | "shortDescription">
 
 export const addNewPost = async (post: PostCreation) => {
     const date = new Date()
