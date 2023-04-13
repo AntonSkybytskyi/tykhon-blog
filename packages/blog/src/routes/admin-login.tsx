@@ -1,7 +1,7 @@
 import { Show } from "solid-js";
-import { FormError, useRouteData } from "solid-start";
+import { FormError } from "solid-start";
 import { createServerAction$, createServerData$, redirect } from "solid-start/server";
-import { createUserSession, getAdmin } from "~/db/session";
+import { createUserSession } from "~/db/session";
 
 const redirectUrl = "/";
 

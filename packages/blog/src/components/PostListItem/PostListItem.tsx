@@ -1,8 +1,8 @@
+import { Post } from "@prisma/client";
 import { A } from "@solidjs/router";
 import { Component } from "solid-js";
-import { PostListItem as IPostListItem } from "~/types";
 
-const PostListItem: Component<IPostListItem> = ({ title, description, slug, thumbnail }) => {
+const PostListItem: Component<Post> = ({ title, description, slug, thumbnail }) => {
     return (
         <A href={`/posts/${slug}`} class="block bg-white rounded-lg shadow border border-transparent hover:border-blue-500 ">
             {thumbnail && <img src={thumbnail} alt={title} class="w-full h-64 object-cover rounded-t-lg" />}

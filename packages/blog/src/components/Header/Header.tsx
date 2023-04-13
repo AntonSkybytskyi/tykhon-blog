@@ -22,7 +22,7 @@ const Header: Component = () => {
     });
 
 
-    const [_, { Form }] = createServerAction$(() => {
+    const [, { Form }] = createServerAction$((_: FormData) => {
         return logout("/")
     })
 

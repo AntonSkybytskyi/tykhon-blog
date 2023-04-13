@@ -5,7 +5,7 @@ import { createServerAction$, createServerData$, redirect } from "solid-start/se
 import { getAllPost, togglePublished } from "~/db/post";
 
 export const routeData = (() => {
-    return createServerData$(async (_, { request, locals }) => {
+    return createServerData$(async (_, { locals }) => {
         if (!locals.isAdmin) {
             return redirect("/404");
         }
