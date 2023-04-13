@@ -330,12 +330,12 @@ const MyEditor: Component<{ content: string, onUpdate: (html: string) => void }>
             StarterKit.configure({
                 bulletList: {
                     HTMLAttributes: {
-                        class: "max-w-md space-y-1 text-gray-500 list-disc list-inside dark:text-gray-400"
+                        class: "space-y-1 list-disc list-inside"
                     }
                 },
                 orderedList: {
                     HTMLAttributes: {
-                        class: "max-w-md space-y-1 text-gray-500 list-decimal list-inside dark:text-gray-400"
+                        class: "space-y-1 list-decimal list-inside"
                     }
                 },
             }),
