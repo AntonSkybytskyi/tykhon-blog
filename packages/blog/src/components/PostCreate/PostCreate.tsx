@@ -3,8 +3,7 @@ import { Component, createSignal } from "solid-js";
 import { A, FormError } from "solid-start";
 import { createServerAction$ } from "solid-start/server";
 import MyEditor from "../MyEditor/MyEditor";
-import { addNewPost } from "~/db/post";
-
+import { addNewPost, editPost } from "~/db/post";
 
 
 const PostCreate: Component<{ post?: Post }> = ({ post }) => {
@@ -16,16 +15,15 @@ const PostCreate: Component<{ post?: Post }> = ({ post }) => {
         const slug = form.get("slug");
 
         if (typeof title !== "string" || typeof description !== "string" || typeof thumbnail !== "string" || typeof slug !== "string") {
-            console.log({ title, description, thumbnail, slug })
             throw new FormError("Something went wrong with data");
         }
 
         if (slug === "") {
-            const newSlug = title.toLocaleLowerCase().replaceAll("", "-");
+            const newSlug = title.toLocaleLowerCase().replaceAll(" ", "-");
             return addNewPost({ title, description, thumbnail, slug: newSlug });
         }
 
-        throw new FormError("New error");
+        return editPost({ title, description, thumbnail, slug });
     });
 
 

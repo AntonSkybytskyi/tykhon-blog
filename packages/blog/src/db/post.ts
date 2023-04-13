@@ -41,6 +41,21 @@ export const addNewPost = async (post: PostCreation) => {
     });
 }
 
+export const editPost = async (post: PostCreation) => {
+    const currentPost = await getPostBySlug(post.slug);
+    if (!currentPost) {
+        throw new Error("Post doens't exist")
+    }
+
+    return db.post.update({
+        where: { slug: post.slug },
+        data: {
+            ...currentPost,
+            ...post,
+        }
+    })
+}
+
 export const getPostBySlug = (slug: string) => {
     return db.post.findUnique({ where: { slug } })
 }

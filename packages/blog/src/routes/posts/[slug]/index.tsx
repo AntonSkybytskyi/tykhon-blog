@@ -7,8 +7,8 @@ import { getPostBySlug } from "~/db/post";
 export const routeData = ({ params }: RouteDataArgs) => {
     return createServerData$(async ([, slug]) => {
         const post = await getPostBySlug(slug);
-        if (!post) {
-            return redirect("/404")
+        if (!post || !post.published) {
+            return redirect("/404");
         }
         return post;
     }, {
