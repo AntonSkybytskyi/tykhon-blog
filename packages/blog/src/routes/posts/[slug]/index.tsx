@@ -1,13 +1,15 @@
 import { Post } from "@prisma/client";
 import { Component, Resource, Show, createMemo } from "solid-js";
-import { RouteDataArgs, useRouteData } from "solid-start";
+import { RouteDataArgs, useRouteData, useSearchParams } from "solid-start";
 import { createServerData$, redirect } from "solid-start/server";
 import { getPostBySlug } from "~/db/post";
 
 export const routeData = ({ params }: RouteDataArgs) => {
-    return createServerData$(async ([, slug]) => {
+    return createServerData$(async ([, slug], { locals }) => {
         const post = await getPostBySlug(slug);
-        if (!post || !post.published) {
+        const canOpenPost = locals.isAdmin || post?.published
+
+        if (!canOpenPost) {
             return redirect("/404");
         }
         return post;

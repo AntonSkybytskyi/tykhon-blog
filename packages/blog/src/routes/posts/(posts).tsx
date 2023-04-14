@@ -33,7 +33,7 @@ const TableRow: Component<{ post: Post }> = ({ post: data }) => {
     return (
         <tr>
             <td class="px-6 py-4 whitespace-nowrap">
-                <A href={`/posts/${post().slug}?preview=1`} class="text-sm font-medium text-blue-500 hover:text-blue-700 hover:underline">
+                <A href={post().slug} class="text-sm font-medium text-blue-500 hover:text-blue-700 hover:underline">
                     {post().title}
                 </A>
             </td>
