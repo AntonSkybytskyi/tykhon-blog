@@ -17,7 +17,6 @@ const TableRow: Component<{ post: Post }> = ({ post: data }) => {
     const [post, setPost] = createSignal<Post>(data);
     const [editing, { Form: FormEdit }] = createServerAction$((formData: FormData) => {
         const slug = formData.get("slug");
-
         if (typeof slug !== "string") {
             throw new FormError("Somethign went wrong")
         }
