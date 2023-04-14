@@ -33,9 +33,9 @@ const TableRow: Component<{ post: Post }> = ({ post: data }) => {
     return (
         <tr>
             <td class="px-6 py-4 whitespace-nowrap">
-                <div class="text-sm font-medium text-gray-900">
+                <A href={`/posts/${post().slug}?preview=1`} class="text-sm font-medium text-blue-500 hover:text-blue-700 hover:underline">
                     {post().title}
-                </div>
+                </A>
             </td>
             <td class="px-6 py-4 whitespace-nowrap">
                 <span
@@ -63,7 +63,7 @@ const TableRow: Component<{ post: Post }> = ({ post: data }) => {
                 </FormEdit>
 
             </td>
-        </tr>
+        </tr >
     );
 };
 
