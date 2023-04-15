@@ -10,29 +10,7 @@ import {
     JSX,
     Show,
 } from "solid-js";
-
-import {
-    Toggle,
-    Toolbar,
-} from "solid-headless";
-
-
-function ParagraphIcon(props: JSX.IntrinsicElements["svg"]): JSX.Element {
-    return (
-        <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="currentColor"
-            viewBox="0 0 24 24"
-            stroke="none"
-            {...props}
-        >
-            <path
-                d="M9 16h2v4h2V6h2v14h2V6h3V4H9c-3.309 0-6 2.691-6 6s2.691 6 6 6zM9 6h2v8H9c-2.206 0-4-1.794-4-4s1.794-4 4-4z"
-            />
-        </svg>
-    );
-}
-
+import Toogle from "./components/Toggle";
 
 function CodeIcon(props: JSX.IntrinsicElements["svg"]): JSX.Element {
     return (
@@ -139,7 +117,7 @@ interface ControlProps {
 
 
 function Control(props: ControlProps): JSX.Element {
-    const flag = createEditorTransaction(
+    const isActive = createEditorTransaction(
         () => props.editor,
         (instance) => {
             if (props.isActive) {
@@ -150,18 +128,14 @@ function Control(props: ControlProps): JSX.Element {
     );
 
     return (
-        <Toggle
-            type="button"
-            defaultPressed={false}
-            class={`${props.class} w-6 h-6 flex items-center justify-center rounded focus:outline-none focus-visible:ring focus-visible:ring-purple-400 focus-visible:ring-opacity-75`}
-            classList={{
-                "text-color-600 bg-white bg-opacity-25": flag(),
-            }}
-            title={props.title}
+        <Toogle
+            class={props.class}
             onChange={props.onChange}
+            active={isActive}
+            title={props.title}
         >
             {props.children}
-        </Toggle>
+        </Toogle>
     );
 }
 
@@ -288,7 +262,6 @@ function ToolbarContents(props: ToolbarProps): JSX.Element {
 
 const MyEditor: Component<{ content: string, onUpdate: (html: string) => void }> = ({ content, onUpdate }) => {
     const [container, setContainer] = createSignal<HTMLDivElement>();
-    const [menu, setMenu] = createSignal<HTMLDivElement>();
 
     const editor = createTiptapEditor(() => ({
         element: container()!,
@@ -320,11 +293,11 @@ const MyEditor: Component<{ content: string, onUpdate: (html: string) => void }>
     return (
         <div class="bg-gradient-to-bl to-blue-500 flex items-center justify-center">
             <div class="flex-1">
-                <Toolbar ref={setMenu} class="dynamic-shadow bg-gradient-to-bl from-indigo-500 to-blue-600 text-white rounded-lg mb-2" horizontal>
+                <div class="dynamic-shadow bg-gradient-to-bl from-indigo-500 to-blue-600 text-white rounded-lg mb-2">
                     <Show when={editor()} keyed>
                         {(instance) => <ToolbarContents editor={instance} />}
                     </Show>
-                </Toolbar>
+                </div>
                 <div class="bg-white overflow-y-scroll rounded-lg h-96 overflow-auto" ref={setContainer} />
             </div>
         </div>

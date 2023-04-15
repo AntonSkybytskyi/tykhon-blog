@@ -23,4 +23,7 @@
         @apply empty:h-6;
     }
 
+    blockquote {
+        @apply text-lg italic font-semibold text-gray-900 dark:text-white;
+    }
 }
