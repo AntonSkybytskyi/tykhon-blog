@@ -43,7 +43,7 @@ const SinglePost: Component = () => {
                 </div>
 
 
-                {post().thumbnail && <img src={post().thumbnail!} alt={post().title} class="w-full h-64 object-cover rounded-lg mb-4" />}
+                {post().thumbnail && <img src={post().thumbnail!} alt={post().title} class="w-full h-64 object-contain rounded-lg mb-4" />}
 
                 <p innerHTML={post().description} />
             </>
