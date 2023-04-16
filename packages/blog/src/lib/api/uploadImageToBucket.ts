@@ -10,9 +10,14 @@ export const uploadImageToBucket = async (file: File | null) => {
 
     const type = file.name.split(".").at(-1);
 
-
     const parallelUploads3 = new Upload({
-        client: new S3({}) || new S3Client({}),
+        client: new S3({
+            credentials: {
+                accessKeyId: process.env.ACCESS_KEY ?? "",
+                secretAccessKey: process.env.SECRET_ACCESS_KEY ?? "",
+            },
+            region: process.env.REGION ?? "",
+        }),
         params: { Bucket: process.env.BUCKET_NAME, Key: `${uuidv4()}.${type}`, Body: file as File },
         queueSize: 4, // optional concurrency configuration
         partSize: 1024 * 1024 * 5, // optional size of each part, in bytes, at least 5MB
