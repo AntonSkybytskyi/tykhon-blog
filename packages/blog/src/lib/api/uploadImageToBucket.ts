@@ -3,10 +3,7 @@ import { Upload } from "@aws-sdk/lib-storage";
 import { S3Client, S3, CompleteMultipartUploadCommandOutput } from "@aws-sdk/client-s3";
 import { v4 as uuidv4 } from "uuid";
 
-const s3 = new S3Client({});
-
 export const uploadImageToBucket = async (file: File | null) => {
-    console.log("uploadImageToBucket")
     if (file === null) {
         throw new Error("File doesn't define");
     }

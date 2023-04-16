@@ -5,8 +5,6 @@ import { uploadImageToBucket } from "~/lib/api/uploadImageToBucket";
 
 const getThumbnailUrl = async (thumbnail: File | string | null): Promise<string> => {
     if (thumbnail !== null || thumbnail !== "string") {
-        console.log("hello 3")
-
         const { url } = await uploadImageToBucket(thumbnail as File);
         return url;
     }
