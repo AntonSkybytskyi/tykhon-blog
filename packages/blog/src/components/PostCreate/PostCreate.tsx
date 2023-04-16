@@ -3,6 +3,7 @@ import { Component, createSignal } from "solid-js";
 import { A } from "solid-start";
 import MyEditor from "../MyEditor/MyEditor";
 import { useSavePostAction$ } from "~/hooks/useSavePostAction$";
+import ImageInput from "./components/ImageInput";
 
 
 const PostCreate: Component<{ post?: Post }> = ({ post }) => {
@@ -10,7 +11,7 @@ const PostCreate: Component<{ post?: Post }> = ({ post }) => {
     const [sending, { Form }] = useSavePostAction$();
 
     return (
-        <Form class="max-w-2xl mx-auto">
+        <Form class="max-w-2xl mx-auto" action="/post">
             <A class="block mb-4" href="/posts">{"<"} Back to My Posts</A>
             <h1 class="text-3xl font-bold text-gray-800 mb-6 ">Create Post</h1>
             <input type="hidden" id="slug" name="slug" value={post?.slug ?? ""} />
@@ -27,16 +28,7 @@ const PostCreate: Component<{ post?: Post }> = ({ post }) => {
             </div>
 
             <div class="mb-4">
-                <label for="thumbnail" class="block text-gray-700 font-bold mb-2">Thumbnail URL(image loading in the future):</label>
-                <input
-                    value={post?.thumbnail ?? ""}
-                    type="text"
-                    id="thumbnail"
-                    name="thumbnail"
-                    class="w-full px-4 py-2 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="Enter link to thumbnail"
-                />
-
+                <ImageInput name="thumbnail" thumbnail={post?.thumbnail} />
             </div>
 
             <div class="mb-4">

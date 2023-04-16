@@ -60,5 +60,15 @@ export const getPostBySlug = (slug: string) => {
     return db.post.findUnique({ where: { slug } })
 }
 
+export const deleteBySlug = async (slug: string) => {
+    const post = await getPostBySlug(slug);
+
+    if (!post) {
+        throw new Error("Post doesn't exist");
+    }
+
+
+    return db.post.delete({ where: { slug } });
+}
 
 

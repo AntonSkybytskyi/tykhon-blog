@@ -2,7 +2,8 @@ import { Post } from "@prisma/client";
 import { Component, For, createEffect, createSignal } from "solid-js";
 import { A, FormError, useRouteData } from "solid-start";
 import { createServerAction$, createServerData$, redirect } from "solid-start/server";
-import { getAllPost, togglePublished } from "~/db/post";
+import ConfirmButton from "~/components/ConfirmButton/ConfirmButton";
+import { deleteBySlug, getAllPost, togglePublished } from "~/db/post";
 
 export const routeData = (() => {
     return createServerData$(async (_, { locals }) => {
@@ -22,7 +23,17 @@ const TableRow: Component<{ post: Post }> = ({ post: data }) => {
         }
 
         return togglePublished(slug);
-    })
+    });
+
+    const [deleting, { Form: FormDelete }] = createServerAction$((formData: FormData) => {
+        const slug = formData.get("slug");
+        console.log({ slug })
+        if (typeof slug !== "string" || slug.length === 0) {
+            throw new FormError("Something went wrong");
+        }
+
+        return deleteBySlug(slug);
+    });
 
     createEffect(() => {
         if (editing.result) {
@@ -50,7 +61,17 @@ const TableRow: Component<{ post: Post }> = ({ post: data }) => {
             </td>
             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                 <A href={`${post().slug}/edit`} class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Edit</A>
-                <a class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ml-4">Delete</a>
+                <FormDelete class="inline">
+                    <input type="hidden" name="slug" value={post().slug} />
+                    <ConfirmButton
+                        class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ml-4 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
+                        submitButtonType="submit"
+                        disabled={deleting.pending}
+                    >
+                        Delete
+                    </ConfirmButton>
+                </FormDelete>
+
                 <FormEdit class="inline">
                     <input type="hidden" name="slug" value={post().slug} />
                     <button

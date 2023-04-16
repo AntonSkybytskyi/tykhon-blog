@@ -40,6 +40,9 @@ importers:
       '@tiptap/starter-kit':
         specifier: ^2.0.3
         version: 2.0.3(@tiptap/pm@2.0.3)
+      '@types/uuid':
+        specifier: ^9.0.1
+        version: 9.0.1
       solid-js:
         specifier: ^1.7.2
         version: 1.7.2
@@ -77,6 +80,9 @@ importers:
       typescript:
         specifier: ^4.9.4
         version: 4.9.4
+      uuid:
+        specifier: ^9.0.0
+        version: 9.0.0
       vite:
         specifier: ^4.1.4
         version: 4.1.4
@@ -3691,6 +3697,10 @@ packages:
 
   /@types/throttle-debounce@2.1.0:
     resolution: {integrity: sha512-5eQEtSCoESnh2FsiLTxE121IiE60hnMqcb435fShf4bpLRjEu1Eoekht23y6zXS9Ts3l+Szu3TARnTsA0GkOkQ==}
+    dev: false
+
+  /@types/uuid@9.0.1:
+    resolution: {integrity: sha512-rFT3ak0/2trgvp4yYZo5iKFEPsET7vKydKF+VRCxlQ9bpheehyAJH89dAkaLEq/j/RZXJIqcgsmPJKUP1Z28HA==}
     dev: false
 
   /@vercel/nft@0.22.6:
@@ -8731,6 +8741,11 @@ packages:
   /uuid@8.3.2:
     resolution: {integrity: sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==}
     hasBin: true
+
+  /uuid@9.0.0:
+    resolution: {integrity: sha512-MXcSTerfPa4uqyzStbRoTgt5XIe3x5+42+q1sDuy3R5MDk66URdLMOZe5aPX/SQd+kuYAh0FdP/pO28IkQyTeg==}
+    hasBin: true
+    dev: true
 
   /v8-compile-cache@2.3.0:
     resolution: {integrity: sha512-l8lCEmLcLYZh4nbunNZvQCJc5pv7+RCwa8q/LdUx8u7lsWvPDKmpodJAJNwkAhJC//dFY48KuIEmjtd4RViDrA==}

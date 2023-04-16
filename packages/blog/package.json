@@ -17,6 +17,7 @@
     "solid-start-vercel": "^0.2.26",
     "tailwindcss": "^3.2.4",
     "typescript": "^4.9.4",
+    "uuid": "^9.0.0",
     "vite": "^4.1.4"
   },
   "dependencies": {
@@ -28,6 +29,7 @@
     "@tiptap/core": "^2.0.3",
     "@tiptap/pm": "^2.0.3",
     "@tiptap/starter-kit": "^2.0.3",
+    "@types/uuid": "^9.0.1",
     "solid-js": "^1.7.2",
     "solid-start": "^0.2.26",
     "solid-tiptap": "^0.6.0",
