@@ -4,6 +4,7 @@ import { A } from "solid-start";
 import MyEditor from "../MyEditor/MyEditor";
 import { useSavePostAction$ } from "~/hooks/useSavePostAction$";
 import ImageInput from "./components/ImageInput";
+import Button from "../Button/Button";
 
 
 const PostCreate: Component<{ post?: Post }> = ({ post }) => {
@@ -46,14 +47,12 @@ const PostCreate: Component<{ post?: Post }> = ({ post }) => {
 
 
             <div class="mt-6">
-                <button
-                    type="submit"
-                    class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed"
-                    disabled={sending.pending}
-                >
+                <Button type="submit" disabled={sending.pending}>
                     {post?.slug ? "Edit Post" : "Create Post"}
-                </button>
-                <button type="button" class="bg-slate-600 text-white py-2 px-4 rounded hover:bg-slate-600 disabled:opacity-50 disabled:cursor-not-allowed ml-2">Cancel</button>
+                </Button>
+                <Button type="button" variant="secondary" class="ml-2">
+                    Cancel
+                </Button>
             </div>
         </Form>
     );

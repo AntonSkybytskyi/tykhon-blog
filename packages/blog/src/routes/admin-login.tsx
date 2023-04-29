@@ -1,6 +1,7 @@
 import { Show } from "solid-js";
 import { FormError } from "solid-start";
 import { createServerAction$, createServerData$, redirect } from "solid-start/server";
+import Button from "~/components/Button/Button";
 import { createUserSession } from "~/db/session";
 
 const redirectUrl = "/";
@@ -74,9 +75,9 @@ export default function AdminLogin() {
                     </div>
 
                     <div class="flex items-center justify-center">
-                        <button class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+                        <Button type="submit" class="font-bold">
                             Sign In
-                        </button>
+                        </Button>
                     </div>
                 </Form>
             </div>

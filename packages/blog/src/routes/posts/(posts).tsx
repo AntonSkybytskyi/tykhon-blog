@@ -2,6 +2,7 @@ import { Post } from "@prisma/client";
 import { Component, For, createEffect, createSignal } from "solid-js";
 import { A, FormError, useRouteData } from "solid-start";
 import { createServerAction$, createServerData$, redirect } from "solid-start/server";
+import Button from "~/components/Button/Button";
 import ConfirmButton from "~/components/ConfirmButton/ConfirmButton";
 import { deleteBySlug, getAllPost, togglePublished } from "~/db/post";
 
@@ -60,11 +61,14 @@ const TableRow: Component<{ post: Post }> = ({ post: data }) => {
                 </span>
             </td>
             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                <A href={`${post().slug}/edit`} class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Edit</A>
+                <Button class="font-bold" href={`${post().slug}/edit`} >
+                    Edit
+                </Button>
                 <FormDelete class="inline">
                     <input type="hidden" name="slug" value={post().slug} />
                     <ConfirmButton
-                        class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ml-4 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
+                        variant="danger"
+                        class="font-bold ml-4"
                         submitButtonType="submit"
                         disabled={deleting.pending}
                     >
@@ -74,15 +78,10 @@ const TableRow: Component<{ post: Post }> = ({ post: data }) => {
 
                 <FormEdit class="inline">
                     <input type="hidden" name="slug" value={post().slug} />
-                    <button
-                        type="submit"
-                        class="bg-green-600 hover:bg-green-900 disabled:bg-green-300 disabled:cursor-not-allowed text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ml-4"
-                        disabled={editing.pending}
-                    >
-                        {post().published ? "Unpublish" : "Publish"}
-                    </button>
+                    <Button type="submit" variant="success" class="font-bold ml-4" disabled={editing.pending}>
+                        <>{post().published ? "Unpublish" : "Publish"}</>
+                    </Button>
                 </FormEdit>
-
             </td>
         </tr >
     );
@@ -98,9 +97,9 @@ export default function Posts() {
             <div class="flex justify-between mb-6">
                 <h1 class="text-2xl font-bold text-gray-800">Author's Posts</h1>
                 <span>
-                    <A href="/posts/create" class="inline-block bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">
+                    <Button class="inline-block" href="/posts/create">
                         Create New Post
-                    </A>
+                    </Button>
                 </span>
             </div>
             <div class="mt-6">

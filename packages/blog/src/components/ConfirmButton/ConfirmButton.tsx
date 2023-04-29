@@ -1,4 +1,5 @@
 import { Component, JSX, createSignal } from "solid-js";
+import Button from "../Button/Button";
 
 type ConfirmProps = {
     onCancel?: () => void;
@@ -7,11 +8,12 @@ type ConfirmProps = {
     submitButtonType?: "button" | "submit" | "reset";
     class?: string;
     disabled?: boolean;
+    variant?: "primary" | "secondary" | "danger";
 };
 
 
 const ConfirmButton: Component<ConfirmProps> = (props) => {
-    const { children, class: classList, submitButtonType = "submit", onCancel, onSubmit, disabled } = props;
+    const { children, class: classList, submitButtonType = "submit", onCancel, onSubmit, disabled, variant } = props;
     const [isConfirmVisible, setConfirmVisible] = createSignal(false)
 
     const toggleVisibility = () => {
@@ -29,16 +31,11 @@ const ConfirmButton: Component<ConfirmProps> = (props) => {
     };
 
     return (<>
-        <button
-            data-modal-target="popup-modal"
-            data-modal-toggle="popup-modal"
-            class={classList}
-            type="button"
-            onClick={toggleVisibility}
-            disabled={disabled}
-        >
+        {/* data-modal-target="popup-modal"
+            data-modal-toggle="popup-modal" */}
+        <Button class={classList} variant={variant} type="button" onClick={toggleVisibility} disabled={disabled}>
             {children}
-        </button>
+        </Button>
 
         <div id="popup-modal"
             tabindex="-1"
@@ -54,22 +51,14 @@ const ConfirmButton: Component<ConfirmProps> = (props) => {
                     <div class="p-6 text-center">
                         <svg aria-hidden="true" class="mx-auto mb-4 text-gray-400 w-14 h-14 dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                         <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Are you sure you want to delete this post?</h3>
-                        <button
-                            data-modal-hide="popup-modal"
-                            type={submitButtonType}
-                            class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2"
-                            onClick={handleAccept}
-                        >
+                        {/* data-modal-hide="popup-modal" */}
+                        <Button variant="danger" type={submitButtonType} class="px-5 py-2.5 mr-2" onClick={handleAccept}>
                             Yes, I'm sure
-                        </button>
-                        <button
-                            data-modal-hide="popup-modal"
-                            type="button"
-                            class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600"
-                            onClick={handleClose}
-                        >
+                        </Button>
+                        {/* data-modal-hide="popup-modal" */}
+                        <Button variant="outline" type="button" class="px-5 py-2.5" onClick={handleClose}>
                             No, cancel
-                        </button>
+                        </Button>
                     </div>
                 </div>
             </div>

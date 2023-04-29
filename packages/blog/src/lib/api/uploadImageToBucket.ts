@@ -1,6 +1,6 @@
 
 import { Upload } from "@aws-sdk/lib-storage";
-import { S3Client, S3, CompleteMultipartUploadCommandOutput } from "@aws-sdk/client-s3";
+import { S3, CompleteMultipartUploadCommandOutput } from "@aws-sdk/client-s3";
 import { v4 as uuidv4 } from "uuid";
 
 export const uploadImageToBucket = async (file: File | null) => {
