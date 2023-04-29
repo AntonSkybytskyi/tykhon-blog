@@ -7,8 +7,8 @@ import { getPublishedPosts } from "~/db/post";
 export const routeData = () => {
     return createServerData$(() => {
         return getPublishedPosts();
-    })
-}
+    });
+};
 
 export default function Home() {
     const posts = useRouteData<typeof routeData>();
@@ -19,9 +19,10 @@ export default function Home() {
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <Show when={posts()}>
                     <For each={posts()}>
-                        {post => <PostListItem {...post} />}
+                        {(post) => <PostListItem {...post} />}
                     </For>
                 </Show>
             </div>
-        </>);
+        </>
+    );
 }

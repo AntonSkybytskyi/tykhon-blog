@@ -1,7 +1,7 @@
-import PostCreate from "~/components/PostCreate/PostCreate"
+import PostCreate from "~/components/PostCreate/PostCreate";
 
 const CreatePost = () => {
-    return <PostCreate />
-}
+    return <PostCreate />;
+};
 
 export default CreatePost;

@@ -22,7 +22,10 @@ export default function Root() {
             <Head>
                 <Title>Tykhonravova Blog</Title>
                 <Meta charset="utf-8" />
-                <Meta name="viewport" content="width=device-width, initial-scale=1" />
+                <Meta
+                    name="viewport"
+                    content="width=device-width, initial-scale=1"
+                />
             </Head>
             <Body class="bg-gray-100 flex flex-col min-h-screen">
                 <Suspense>

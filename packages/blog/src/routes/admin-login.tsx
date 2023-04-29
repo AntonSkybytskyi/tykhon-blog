@@ -1,6 +1,10 @@
 import { Show } from "solid-js";
 import { FormError } from "solid-start";
-import { createServerAction$, createServerData$, redirect } from "solid-start/server";
+import {
+    createServerAction$,
+    createServerData$,
+    redirect,
+} from "solid-start/server";
 import Button from "~/components/Button/Button";
 import { createUserSession } from "~/db/session";
 
@@ -16,34 +20,48 @@ export const routeData = () => {
 };
 
 export default function AdminLogin() {
-    const [loggingIn, { Form }] = createServerAction$(async (form: FormData) => {
-        const username = form.get("username");
-        const password = form.get("password");
+    const [loggingIn, { Form }] = createServerAction$(
+        async (form: FormData) => {
+            const username = form.get("username");
+            const password = form.get("password");
 
-        if (typeof username !== "string" || typeof password !== "string") {
-            throw new FormError("Something went wrong");
+            if (typeof username !== "string" || typeof password !== "string") {
+                throw new FormError("Something went wrong");
+            }
+
+            if (
+                username !== import.meta.env.VITE_ADMIN_USERNAME ||
+                password !== import.meta.env.VITE_ADMIN_PASSWORD
+            ) {
+                throw new FormError(
+                    `Username/Password combination is incorrect`,
+                    {
+                        fields: { username, password },
+                    }
+                );
+            }
+
+            return createUserSession(username, redirectUrl);
         }
-
-        if (username !== import.meta.env.VITE_ADMIN_USERNAME || password !== import.meta.env.VITE_ADMIN_PASSWORD) {
-            throw new FormError(`Username/Password combination is incorrect`, {
-                fields: { username, password },
-            });
-        }
-
-        return createUserSession(username, redirectUrl);
-    });
+    );
 
     return (
         <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
             <div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
                 <Form class="space-y-6">
                     <Show when={loggingIn.error}>
-                        <div role="alert" class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400">
+                        <div
+                            role="alert"
+                            class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+                        >
                             {loggingIn.error.message}
                         </div>
                     </Show>
                     <div>
-                        <label for="username" class="block text-sm font-medium text-gray-700">
+                        <label
+                            for="username"
+                            class="block text-sm font-medium text-gray-700"
+                        >
                             Username
                         </label>
                         <div class="mt-1">
@@ -59,7 +77,10 @@ export default function AdminLogin() {
                     </div>
 
                     <div>
-                        <label for="password" class="block text-sm font-medium text-gray-700">
+                        <label
+                            for="password"
+                            class="block text-sm font-medium text-gray-700"
+                        >
                             Password
                         </label>
                         <div class="mt-1">
@@ -82,6 +103,5 @@ export default function AdminLogin() {
                 </Form>
             </div>
         </div>
-    )
-
+    );
 }

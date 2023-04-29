@@ -1,15 +1,16 @@
 import {
-  StartServer,
-  createHandler,
-  renderAsync,
+    StartServer,
+    createHandler,
+    renderAsync,
 } from "solid-start/entry-server";
 import { getAdmin } from "./db/session";
 
 export default createHandler(
-  ({ forward }) => async (event) => {
-    event.locals.isAdmin = !!(await getAdmin(event.request))
+    ({ forward }) =>
+        async (event) => {
+            event.locals.isAdmin = !!(await getAdmin(event.request));
 
-    return forward(event)
-  },
-  renderAsync((event) => <StartServer event={event} />)
+            return forward(event);
+        },
+    renderAsync((event) => <StartServer event={event} />)
 );

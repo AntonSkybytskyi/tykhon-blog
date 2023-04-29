@@ -1,41 +1,44 @@
 {
-  "name": "blog",
-  "scripts": {
-    "dev": "solid-start dev",
-    "build": "prisma generate && solid-start build",
-    "start": "solid-start start",
-    "test": "echo test will be here!",
-    "prisma:push": "prisma db push"
-  },
-  "type": "module",
-  "devDependencies": {
-    "autoprefixer": "^10.4.13",
-    "aws-sdk": "^2.1359.0",
-    "postcss": "^8.4.21",
-    "prisma": "^4.12.0",
-    "solid-start-node": "^0.2.19",
-    "solid-start-vercel": "^0.2.26",
-    "tailwindcss": "^3.2.4",
-    "typescript": "^4.9.4",
-    "uuid": "^9.0.0",
-    "vite": "^4.1.4"
-  },
-  "dependencies": {
-    "@aws-sdk/client-s3": "^3.312.0",
-    "@aws-sdk/lib-storage": "^3.312.0",
-    "@prisma/client": "^4.12.0",
-    "@solidjs/meta": "^0.28.2",
-    "@solidjs/router": "^0.8.2",
-    "@tiptap/core": "^2.0.3",
-    "@tiptap/pm": "^2.0.3",
-    "@tiptap/starter-kit": "^2.0.3",
-    "@types/uuid": "^9.0.1",
-    "solid-js": "^1.7.2",
-    "solid-start": "^0.2.26",
-    "solid-tiptap": "^0.6.0",
-    "undici": "^5.15.1"
-  },
-  "engines": {
-    "node": ">=16"
-  }
+    "name": "blog",
+    "scripts": {
+        "dev": "solid-start dev",
+        "build": "prisma generate && solid-start build",
+        "start": "solid-start start",
+        "test": "echo test will be here!",
+        "prisma:push": "prisma db push",
+        "lint:fix": "pnpm prettier --write .",
+        "lint": "pnpm prettier --check ."
+    },
+    "type": "module",
+    "devDependencies": {
+        "autoprefixer": "^10.4.13",
+        "aws-sdk": "^2.1359.0",
+        "postcss": "^8.4.21",
+        "prisma": "^4.12.0",
+        "solid-start-node": "^0.2.19",
+        "solid-start-vercel": "^0.2.26",
+        "tailwindcss": "^3.2.4",
+        "typescript": "^4.9.4",
+        "uuid": "^9.0.0",
+        "vite": "^4.1.4"
+    },
+    "dependencies": {
+        "@aws-sdk/client-s3": "^3.312.0",
+        "@aws-sdk/lib-storage": "^3.312.0",
+        "@prisma/client": "^4.12.0",
+        "@solidjs/meta": "^0.28.2",
+        "@solidjs/router": "^0.8.2",
+        "@tiptap/core": "^2.0.3",
+        "@tiptap/pm": "^2.0.3",
+        "@tiptap/starter-kit": "^2.0.3",
+        "@types/uuid": "^9.0.1",
+        "prettier": "^2.8.8",
+        "solid-js": "^1.7.2",
+        "solid-start": "^0.2.26",
+        "solid-tiptap": "^0.6.0",
+        "undici": "^5.15.1"
+    },
+    "engines": {
+        "node": ">=16"
+    }
 }
