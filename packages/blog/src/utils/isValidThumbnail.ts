@@ -1,9 +1,15 @@
 const allowFileType = ["image/jpeg", "image/png", "image/gif", "image/webp"];
 
-export const isValidThumbnail = (thumbnail: File | string | null): boolean => {
-    return (
-        typeof thumbnail === null ||
-        (typeof thumbnail === "string" && thumbnail.length > 0) ||
-        (thumbnail instanceof File && allowFileType.includes(thumbnail.type))
-    );
+export const isValidThumbnail = (thumbnail: File | string): boolean => {
+    if (typeof thumbnail === "string") {
+        return thumbnail.length > 0;
+    }
+    if (thumbnail instanceof File) {
+        return allowFileType.includes(thumbnail.type);
+    }
+
+    return false;
 };
+
+export const isValidThumbnailType$ = (thumbnail: File) =>
+    allowFileType.includes(thumbnail.type);

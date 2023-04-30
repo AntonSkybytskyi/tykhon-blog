@@ -37,7 +37,11 @@ const PostCreate: Component<{ post?: Post }> = ({ post }) => {
             </div>
 
             <div class="mb-4">
-                <ImageInput name="thumbnail" thumbnail={post?.thumbnail} />
+                <ImageInput
+                    name="thumbnail"
+                    thumbnail={post?.thumbnail ?? ""}
+                    fileInputName="thumbnailBlob"
+                />
             </div>
 
             <div class="mb-4">

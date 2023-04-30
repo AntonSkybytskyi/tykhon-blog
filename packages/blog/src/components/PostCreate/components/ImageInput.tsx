@@ -1,12 +1,18 @@
 import { Component, createSignal } from "solid-js";
 import { isValidThumbnail } from "~/utils/isValidThumbnail";
 
-const ImageInput: Component<{ thumbnail?: string | null; name: string }> = (
-    props
-) => {
-    const [currentImage, setCurrentImage] = createSignal<string | null>(
-        props.thumbnail ?? null
-    );
+type ImageInputProps = {
+    name: string;
+    fileInputName: string;
+    thumbnail?: string;
+};
+
+const ImageInput: Component<ImageInputProps> = ({
+    name,
+    fileInputName,
+    thumbnail = "",
+}) => {
+    const [currentImage, setCurrentImage] = createSignal(thumbnail);
 
     const onCoverImageChange = (event: any) => {
         const [file] = event.target.files;
@@ -24,11 +30,12 @@ const ImageInput: Component<{ thumbnail?: string | null; name: string }> = (
             <div class="flex items-center justify-center w-full">
                 <input
                     id="dropzone-file"
-                    name={props.name}
+                    name={fileInputName}
                     type="file"
                     class="hidden"
                     onChange={onCoverImageChange}
                 />
+                <input type="hidden" name={name} value={currentImage()} />
                 {!!currentImage() && (
                     <div class="inline-block relative">
                         <img src={currentImage() as string} alt="" />
@@ -36,7 +43,7 @@ const ImageInput: Component<{ thumbnail?: string | null; name: string }> = (
                             type="button"
                             class="bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700 absolute top-1 right-1"
                             aria-label="Delete"
-                            onClick={() => setCurrentImage(null)}
+                            onClick={() => setCurrentImage("")}
                         >
                             <span class="sr-only">Delete</span>
                             <svg
