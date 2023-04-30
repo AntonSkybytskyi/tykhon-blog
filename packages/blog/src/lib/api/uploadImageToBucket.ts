@@ -1,6 +1,7 @@
 import { Upload } from "@aws-sdk/lib-storage";
-import { S3, CompleteMultipartUploadCommandOutput } from "@aws-sdk/client-s3";
+import { CompleteMultipartUploadCommandOutput } from "@aws-sdk/client-s3";
 import { v4 as uuidv4 } from "uuid";
+import s3Client from "./aws/s3Client";
 
 export const uploadImageToBucket = async (file: File | null) => {
     if (file === null) {
@@ -10,13 +11,7 @@ export const uploadImageToBucket = async (file: File | null) => {
     const type = file.name.split(".").at(-1);
 
     const parallelUploads3 = new Upload({
-        client: new S3({
-            credentials: {
-                accessKeyId: process.env.ACCESS_KEY ?? "",
-                secretAccessKey: process.env.SECRET_ACCESS_KEY ?? "",
-            },
-            region: process.env.REGION ?? "",
-        }),
+        client: s3Client,
         params: {
             Bucket: process.env.BUCKET_NAME,
             Key: `${uuidv4()}.${type}`,

@@ -59,6 +59,9 @@ importers:
         specifier: ^5.22.0
         version: 5.22.0
     devDependencies:
+      '@types/node':
+        specifier: ^18.16.3
+        version: 18.16.3
       autoprefixer:
         specifier: ^10.4.14
         version: 10.4.14(postcss@8.4.23)
@@ -88,7 +91,7 @@ importers:
         version: 9.0.0
       vite:
         specifier: ^4.3.3
-        version: 4.3.3
+        version: 4.3.3(@types/node@18.16.3)
 
 packages:
 
@@ -2416,7 +2419,7 @@ packages:
     resolution: {integrity: sha512-yUCDCcRNNbI9UUsUB6FYEmDHpo5Tn/f0q5D7vhDP4i6Or8kBj82y7+e31hwfLvK2ykOYlDVs2MxAluH/+QUBOQ==}
     engines: {node: ^14.15.0 || >=16.0.0}
     dependencies:
-      chalk: 4.1.0
+      chalk: 4.1.2
       execa: 5.0.0
       strong-log-transformer: 2.1.0
     dev: true
@@ -3524,6 +3527,9 @@ packages:
     resolution: {integrity: sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==}
     dev: true
 
+  /@types/node@18.16.3:
+    resolution: {integrity: sha512-OPs5WnnT1xkCBiuQrZA4+YAV4HEJejmHneyraIaxsbev5yCEr6KMwINNFP9wQeFIw8FWcoTqF3vQsa5CDaI+8Q==}
+
   /@types/normalize-package-data@2.4.1:
     resolution: {integrity: sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw==}
     dev: true
@@ -4053,7 +4059,7 @@ packages:
       promise-inflight: 1.0.1
       rimraf: 3.0.2
       ssri: 9.0.1
-      tar: 6.1.11
+      tar: 6.1.13
       unique-filename: 2.0.1
     transitivePeerDependencies:
       - bluebird
@@ -4074,7 +4080,7 @@ packages:
       p-map: 4.0.0
       promise-inflight: 1.0.1
       ssri: 10.0.3
-      tar: 6.1.11
+      tar: 6.1.13
       unique-filename: 3.0.0
     transitivePeerDependencies:
       - bluebird
@@ -6420,7 +6426,7 @@ packages:
       npmlog: 6.0.2
       rimraf: 3.0.2
       semver: 7.4.0
-      tar: 6.1.11
+      tar: 6.1.13
       which: 2.0.2
     transitivePeerDependencies:
       - bluebird
@@ -6961,7 +6967,7 @@ packages:
       read-package-json-fast: 2.0.3
       rimraf: 3.0.2
       ssri: 9.0.1
-      tar: 6.1.11
+      tar: 6.1.13
     transitivePeerDependencies:
       - bluebird
       - supports-color
@@ -6989,7 +6995,7 @@ packages:
       read-package-json-fast: 3.0.2
       sigstore: 1.2.0
       ssri: 10.0.3
-      tar: 6.1.11
+      tar: 6.1.13
     transitivePeerDependencies:
       - bluebird
       - supports-color
@@ -7935,7 +7941,7 @@ packages:
       solid-start: 0.2.26(@solidjs/meta@0.28.4)(@solidjs/router@0.8.2)(solid-js@1.7.3)(solid-start-node@0.2.26)(solid-start-vercel@0.2.26)(vite@4.3.3)
       terser: 5.17.1
       undici: 5.22.0
-      vite: 4.3.3
+      vite: 4.3.3(@types/node@18.16.3)
     transitivePeerDependencies:
       - supports-color
 
@@ -7954,7 +7960,7 @@ packages:
       rollup: 3.21.2
       solid-start: 0.2.26(@solidjs/meta@0.28.4)(@solidjs/router@0.8.2)(solid-js@1.7.3)(solid-start-node@0.2.26)(solid-start-vercel@0.2.26)(vite@4.3.3)
       terser: 5.17.1
-      vite: 4.3.3
+      vite: 4.3.3(@types/node@18.16.3)
     transitivePeerDependencies:
       - encoding
       - supports-color
@@ -8026,7 +8032,7 @@ packages:
       solid-start-vercel: 0.2.26(solid-start@0.2.26)(vite@4.3.3)
       terser: 5.17.1
       undici: 5.22.0
-      vite: 4.3.3
+      vite: 4.3.3(@types/node@18.16.3)
       vite-plugin-inspect: 0.7.24(rollup@3.21.2)(vite@4.3.3)
       vite-plugin-solid: 2.7.0(solid-js@1.7.3)(vite@4.3.3)
       wait-on: 6.0.1(debug@4.3.4)
@@ -8688,7 +8694,7 @@ packages:
       fs-extra: 11.1.1
       picocolors: 1.0.0
       sirv: 2.0.3
-      vite: 4.3.3
+      vite: 4.3.3(@types/node@18.16.3)
     transitivePeerDependencies:
       - rollup
       - supports-color
@@ -8706,12 +8712,12 @@ packages:
       merge-anything: 5.1.5
       solid-js: 1.7.3
       solid-refresh: 0.5.2(solid-js@1.7.3)
-      vite: 4.3.3
+      vite: 4.3.3(@types/node@18.16.3)
       vitefu: 0.2.4(vite@4.3.3)
     transitivePeerDependencies:
       - supports-color
 
-  /vite@4.3.3:
+  /vite@4.3.3(@types/node@18.16.3):
     resolution: {integrity: sha512-MwFlLBO4udZXd+VBcezo3u8mC77YQk+ik+fbc0GZWGgzfbPP+8Kf0fldhARqvSYmtIWoAJ5BXPClUbMTlqFxrA==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -8736,6 +8742,7 @@ packages:
       terser:
         optional: true
     dependencies:
+      '@types/node': 18.16.3
       esbuild: 0.17.18
       postcss: 8.4.23
       rollup: 3.21.2
@@ -8750,7 +8757,7 @@ packages:
       vite:
         optional: true
     dependencies:
-      vite: 4.3.3
+      vite: 4.3.3(@types/node@18.16.3)
 
   /w3c-keyname@2.2.6:
     resolution: {integrity: sha512-f+fciywl1SJEniZHD6H+kUO8gOnwIr7f4ijKA6+ZvJFjeGi1r4PDLl53Ayud9O/rk64RqgoQine0feoeOU0kXg==}

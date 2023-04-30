@@ -1,6 +1,6 @@
 import { FormError } from "solid-start";
 import { createServerAction$, redirect } from "solid-start/server";
-import { addNewPost, editPost } from "~/db/post";
+import { getPostBySlug, upsertPost } from "~/db/post";
 import { uploadImageToBucket } from "~/lib/api/uploadImageToBucket";
 import { isValidThumbnailType$ } from "~/utils/isValidThumbnail";
 
@@ -13,6 +13,24 @@ const getThumbnailUrl = async (
         return url;
     }
     return thumbnail ?? "";
+};
+
+const isValidSlug = async (slug: string): Promise<boolean> => {
+    return !!getPostBySlug(slug);
+};
+
+const getSlug = async (title: string): Promise<string> => {
+    const slug = title.toLocaleLowerCase().replaceAll(" ", "-");
+
+    if (await isValidSlug(slug)) {
+        return slug;
+    }
+
+    const date = new Date();
+    const suffix = `${date.getMonth()}-${date.getFullYear()}`;
+    console.log("Maybe return an error");
+
+    return `${slug}-${suffix}`;
 };
 
 export const useSavePostAction$ = () => {
@@ -37,25 +55,15 @@ export const useSavePostAction$ = () => {
             currentThumbnail,
             form.get("thumbnailBlob") as File
         );
+        const postSlug = slug === "" ? await getSlug(title) : slug;
 
-        if (slug === "") {
-            const newSlug = title.toLocaleLowerCase().replaceAll(" ", "-");
-            await addNewPost({
-                title,
-                description,
-                thumbnail,
-                slug: newSlug,
-                shortDescription,
-            });
-        } else {
-            await editPost({
-                title,
-                description,
-                thumbnail,
-                slug,
-                shortDescription,
-            });
-        }
+        await upsertPost({
+            title,
+            description,
+            thumbnail,
+            slug: postSlug,
+            shortDescription,
+        });
 
         return redirect("/posts");
     });

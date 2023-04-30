@@ -28,34 +28,11 @@ type PostCreation = Pick<
     "title" | "description" | "slug" | "thumbnail" | "shortDescription"
 >;
 
-export const addNewPost = async (post: PostCreation) => {
-    const date = new Date();
-
-    if (await getPostBySlug(post.slug)) {
-        const suffix = `${date.getMonth()}-${date.getFullYear()}`;
-        console.log("Maybe return an error");
-        post.slug = `${post.slug}-${suffix}`;
-    }
-
-    return db.post.create({
-        data: {
-            ...post,
-        },
-    });
-};
-
-export const editPost = async (post: PostCreation) => {
-    const currentPost = await getPostBySlug(post.slug);
-    if (!currentPost) {
-        throw new Error("Post doens't exist");
-    }
-
-    return db.post.update({
+export const upsertPost = async (post: PostCreation) => {
+    return db.post.upsert({
         where: { slug: post.slug },
-        data: {
-            ...currentPost,
-            ...post,
-        },
+        update: { ...post },
+        create: { ...post },
     });
 };
 
