@@ -28,22 +28,35 @@ export default function About() {
             <Title>About Me</Title>
             <PageTitle>About Me</PageTitle>
             <div class="mb-4">
+
                 <p>
-                    Hi! My name is Natalia Tykhonravova. I work professionally
-                    as a QA specialist since 201X.
+
+                    Hey there, guest! I'm Natalia, an IT professional with a journey that started back in 2014. Over the years, I've had the opportunity to work in various positions, gaining valuable insights along the way.
                 </p>
 
                 <p>
-                    I work at Yolo Group. Formerly, I'm working at BetCasino as
-                    QA Lead.
+
+                    For the past six years, my focus has been on being a Quality Assurance specialist. I've developed a strong skill set in manual testing and have become well-versed in the art of team management. Alongside that, I've been instrumental in setting up and improving QA processes within organizations, ensuring that projects run smoothly and efficiently.
                 </p>
-                <p>Bla... Bla.. Bla...</p>
+                <p>
+
+                    Mentoring is something I'm truly passionate about. I enjoy sharing my knowledge and helping others grow in their careers. Guiding individuals and seeing them succeed gives me great satisfaction.
+                </p>
+
+                <p>
+
+                    Through this blog, I aim to share my experiences, challenges, and personal opinions on various matters. You'll find insights on testing methodologies, team dynamics, and industry trends, among other topics.
+                </p>
+                <p>
+
+                    Feel free to reach out with any questions you may have, and enjoy exploring the articles on this blog.
+                </p>
             </div>
             <p>
                 <strong>You can also find me in:</strong>
             </p>
 
-            <ul class="text-blue-400 py-2">
+            <ul class="text-blue-400 py-2 flex">
                 <li>
                     <A
                         href={linkedinHref}
@@ -51,7 +64,17 @@ export default function About() {
                         class="bg-transparent hover:bg-gray-200 disabled:hover:bg-gray-200 disabled:cursor-not-allowed text-inherit inline-flex items-center px-2"
                     >
                         <LinkedinIcon class="fill-blue-400" />
-                        LinkedIN
+                        Linkedin
+                    </A>
+
+                </li>
+                <li>
+                    <A href={"https://www.instagram.com/tikhon_n/"} target="_blank"
+                        class="bg-transparent hover:bg-gray-200 disabled:hover:bg-gray-200 disabled:cursor-not-allowed text-inherit inline-flex items-center px-2"
+                    >
+                        <LinkedinIcon class="fill-blue-400" />
+
+                        Instagram
                     </A>
                 </li>
             </ul>
