@@ -41,24 +41,26 @@ const SinglePost: Component = () => {
                     <p class="text-gray-600 mb-4">
                         Posted on {publishedTime()}
                     </p>
-
-                    <div class="text-gray-400 text-sm mb-4">
-                        <span class="mr-2">
-                            <i class="fas fa-tags"></i>
-                            <a
-                                href="#"
-                                class="hover:text-gray-200 bg-green-500 text-white rounded-full px-3 py-1 mr-3"
-                            >
-                                Technology
-                            </a>
-                            <a
-                                href="#"
-                                class="hover:text-gray-200 bg-purple-500 text-white rounded-full px-3 py-1 mr-3"
-                            >
-                                Gadgets
-                            </a>
-                        </span>
-                    </div>
+                    {/* todo: Add tags to posts */}
+                    <Show when={false}>
+                        <div class="text-gray-400 text-sm mb-4">
+                            <span class="mr-2">
+                                <i class="fas fa-tags"></i>
+                                <a
+                                    href="#"
+                                    class="hover:text-gray-200 bg-green-500 text-white rounded-full px-3 py-1 mr-3"
+                                >
+                                    Technology
+                                </a>
+                                <a
+                                    href="#"
+                                    class="hover:text-gray-200 bg-purple-500 text-white rounded-full px-3 py-1 mr-3"
+                                >
+                                    Gadgets
+                                </a>
+                            </span>
+                        </div>
+                    </Show>
 
                     {post().thumbnail && (
                         <img

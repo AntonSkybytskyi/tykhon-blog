@@ -41,7 +41,7 @@ const ImageInput: Component<ImageInputProps> = ({
                         <img src={currentImage() as string} alt="" />
                         <button
                             type="button"
-                            class="bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700 absolute top-1 right-1"
+                            class="bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex h-8 w-8 absolute top-1 right-1"
                             aria-label="Delete"
                             onClick={() => setCurrentImage("")}
                         >
@@ -65,7 +65,7 @@ const ImageInput: Component<ImageInputProps> = ({
                 {!currentImage() && (
                     <label
                         for="dropzone-file"
-                        class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
+                        class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100"
                     >
                         <div class="flex flex-col items-center justify-center pt-5 pb-6">
                             <svg
@@ -83,13 +83,13 @@ const ImageInput: Component<ImageInputProps> = ({
                                     d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
                                 ></path>
                             </svg>
-                            <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
+                            <p class="mb-2 text-sm text-gray-500">
                                 <span class="font-semibold">
                                     Click to upload
                                 </span>{" "}
                                 or drag and drop
                             </p>
-                            <p class="text-xs text-gray-500 dark:text-gray-400">
+                            <p class="text-xs text-gray-500">
                                 SVG, PNG, JPG or GIF (MAX. 800x400px)
                             </p>
                         </div>

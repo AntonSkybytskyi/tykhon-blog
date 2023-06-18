@@ -4,15 +4,15 @@
 
 @layer base {
     h1 {
-        @apply mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white;
+        @apply mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl ;
     }
 
     h2 {
-        @apply text-4xl font-extrabold dark:text-white;
+        @apply text-4xl font-extrabold ;
     }
 
     h3 {
-        @apply text-3xl font-bold dark:text-white;
+        @apply text-3xl font-bold ;
     }
 
     li > p {
@@ -24,6 +24,6 @@
     }
 
     blockquote {
-        @apply text-lg italic font-semibold text-gray-900 dark:text-white;
+        @apply text-lg italic font-semibold text-gray-900;
     }
 }

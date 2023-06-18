@@ -58,10 +58,10 @@ const ConfirmButton: Component<ConfirmProps> = (props) => {
                 classList={{ ["hidden"]: !isConfirmVisible() }}
             >
                 <div class="relative w-full max-w-md max-h-full">
-                    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                    <div class="relative bg-white rounded-lg ">
                         <button
                             type="button"
-                            class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
+                            class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center"
                             data-modal-hide="popup-modal"
                             onClick={handleClose}
                         >
@@ -83,7 +83,7 @@ const ConfirmButton: Component<ConfirmProps> = (props) => {
                         <div class="p-6 text-center">
                             <svg
                                 aria-hidden="true"
-                                class="mx-auto mb-4 text-gray-400 w-14 h-14 dark:text-gray-200"
+                                class="mx-auto mb-4 text-gray-400 w-14 h-14 "
                                 fill="none"
                                 stroke="currentColor"
                                 viewBox="0 0 24 24"
@@ -96,7 +96,7 @@ const ConfirmButton: Component<ConfirmProps> = (props) => {
                                     d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                                 ></path>
                             </svg>
-                            <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
+                            <h3 class="mb-5 text-lg font-normal text-gray-500">
                                 Are you sure you want to delete this post?
                             </h3>
                             {/* data-modal-hide="popup-modal" */}
