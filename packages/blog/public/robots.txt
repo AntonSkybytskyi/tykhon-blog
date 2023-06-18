@@ -9,3 +9,5 @@ Disallow: /dashboard
 # Allow all crawlers
 User-agent: *
 Allow: /
+
+Sitemap: /api/sitemap
