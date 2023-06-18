@@ -1,8 +1,11 @@
 import { createTiptapEditor, createEditorTransaction } from "solid-tiptap";
 import { Editor } from "@tiptap/core";
 import StarterKit from "@tiptap/starter-kit";
+import Image from "@tiptap/extension-image";
 import { Component, createSignal, JSX, Show } from "solid-js";
 import Toogle from "./components/Toggle";
+import Button from "../Button/Button";
+import AddImageControl from "./components/AddImageControl";
 
 function CodeIcon(props: JSX.IntrinsicElements["svg"]): JSX.Element {
     return (
@@ -278,6 +281,19 @@ function ToolbarContents(props: ToolbarProps): JSX.Element {
                 >
                     <CodeBlockIcon class="w-full h-full m-1" />
                 </Control>
+                <AddImageControl
+                    onSelect={(images: string[]) => {
+                        images.forEach((image) => {
+                            props.editor
+                                .chain()
+                                .focus()
+                                .setImage({ src: image })
+                                .run();
+                        });
+                    }}
+                >
+                    <BulletListIcon class="w-full h-full m-1" />
+                </AddImageControl>
             </div>
         </div>
     );
@@ -303,6 +319,10 @@ const MyEditor: Component<{
                         class: "space-y-1 list-decimal list-inside",
                     },
                 },
+            }),
+            Image.configure({
+                inline: true,
+                allowBase64: true,
             }),
         ],
         editorProps: {
