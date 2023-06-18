@@ -17,6 +17,7 @@ import MainContent from "./components/MainContent/MainContent";
 import Title from "./components/Title/Title";
 
 import { inject } from '@vercel/analytics';
+
 export default function Root() {
     inject()
 
