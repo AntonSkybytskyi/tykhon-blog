@@ -1,6 +1,6 @@
 import { Post } from "@prisma/client";
 import { Component, Resource, Show, createMemo } from "solid-js";
-import { RouteDataArgs, useRouteData, useSearchParams } from "solid-start";
+import { Meta, RouteDataArgs, Title, useRouteData, useSearchParams } from "solid-start";
 import { createServerData$, redirect } from "solid-start/server";
 import { getPostBySlug } from "~/db/post";
 
@@ -35,6 +35,8 @@ const SinglePost: Component = () => {
         <Show when={data()}>
             {(post) => (
                 <>
+                    <Title>{post().title}</Title>
+                    <Meta name="description" content={post().keywords} />
                     <h1 class="text-3xl font-bold mb-4">{post().title}</h1>
                     <p class="text-gray-600 mb-4">
                         Posted on {publishedTime()}

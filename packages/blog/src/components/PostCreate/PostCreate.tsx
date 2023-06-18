@@ -37,6 +37,20 @@ const PostCreate: Component<{ post?: Post }> = ({ post }) => {
             </div>
 
             <div class="mb-4">
+                <label for="keywords" class="block text-gray-700 font-bold mb-2">
+                    Keywords:
+                </label>
+                <input
+                    value={post?.keywords ?? ""}
+                    type="text"
+                    id="keywords"
+                    name="keywords"
+                    class="w-full px-4 py-2 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    placeholder="Enter the keywords to your post(SEO)"
+                />
+            </div>
+
+            <div class="mb-4">
                 <ImageInput
                     name="thumbnail"
                     thumbnail={post?.thumbnail ?? ""}

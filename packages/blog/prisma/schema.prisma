@@ -13,6 +13,7 @@ datasource db {
 
 model Post {
   slug             String    @unique
+  keywords         String    @db.Text
   thumbnail        String?
   title            String    @db.VarChar(256)
   description      String    @db.Text

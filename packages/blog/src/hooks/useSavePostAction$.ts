@@ -36,6 +36,7 @@ const getSlug = async (title: string): Promise<string> => {
 export const useSavePostAction$ = () => {
     return createServerAction$(async (form: FormData, { request }) => {
         const title = form.get("title");
+        const keywords = form.get("keywords");
         const description = form.get("description");
         const slug = form.get("slug");
         const shortDescription = form.get("shortDescription");
@@ -45,7 +46,8 @@ export const useSavePostAction$ = () => {
             typeof description !== "string" ||
             typeof slug !== "string" ||
             typeof shortDescription !== "string" ||
-            typeof currentThumbnail !== "string"
+            typeof currentThumbnail !== "string" ||
+            typeof keywords !== "string"
         ) {
             throw new FormError("Something went wrong with data");
         }
@@ -59,6 +61,7 @@ export const useSavePostAction$ = () => {
 
         await upsertPost({
             title,
+            keywords,
             description,
             thumbnail,
             slug: postSlug,
