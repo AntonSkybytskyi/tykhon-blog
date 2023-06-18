@@ -1,7 +1,8 @@
 import { Post } from "@prisma/client";
 import { Component, Resource, Show, createMemo } from "solid-js";
-import { Meta, RouteDataArgs, Title, useRouteData, useSearchParams } from "solid-start";
+import { Meta, RouteDataArgs, useRouteData } from "solid-start";
 import { createServerData$, redirect } from "solid-start/server";
+import Title from "~/components/Title/Title";
 import { getPostBySlug } from "~/db/post";
 
 export const routeData = ({ params }: RouteDataArgs) => {

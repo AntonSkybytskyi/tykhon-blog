@@ -24,8 +24,7 @@ const Button: Component<ButtonProps> = ({
         ["bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:shadow-outline"]:
             variant === "primary",
         ["bg-slate-600 text-white hover:bg-slate-600"]: variant === "secondary",
-        ["bg-red-500 hover:bg-red-700 text-white"]:
-            variant === "danger",
+        ["bg-red-500 hover:bg-red-700 text-white"]: variant === "danger",
         ["text-gray-500 bg-white hover:bg-gray-100 border border-gray-200 hover:text-gray-900"]:
             variant === "outline",
         ["bg-green-600 hover:bg-green-900 disabled:bg-green-300 disabled:cursor-not-allowed text-white"]:

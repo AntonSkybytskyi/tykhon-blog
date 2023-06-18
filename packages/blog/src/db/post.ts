@@ -25,7 +25,12 @@ export const togglePublished = async (slug: string) => {
 };
 type PostCreation = Pick<
     Post,
-    "title" | "description" | "slug" | "thumbnail" | "shortDescription" | "keywords"
+    | "title"
+    | "description"
+    | "slug"
+    | "thumbnail"
+    | "shortDescription"
+    | "keywords"
 >;
 
 export const upsertPost = async (post: PostCreation) => {

@@ -37,7 +37,10 @@ const PostCreate: Component<{ post?: Post }> = ({ post }) => {
             </div>
 
             <div class="mb-4">
-                <label for="keywords" class="block text-gray-700 font-bold mb-2">
+                <label
+                    for="keywords"
+                    class="block text-gray-700 font-bold mb-2"
+                >
                     Keywords:
                 </label>
                 <input

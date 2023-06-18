@@ -9,18 +9,18 @@ import {
     Meta,
     Routes,
     Scripts,
-    Title,
 } from "solid-start";
 import "./root.css";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import MainContent from "./components/MainContent/MainContent";
+import Title from "./components/Title/Title";
 
 export default function Root() {
     return (
         <Html lang="en">
             <Head>
-                <Title>Tykhonravova Blog</Title>
+                <Title />
                 <Meta charset="utf-8" />
                 <Meta
                     name="viewport"
