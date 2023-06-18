@@ -16,6 +16,8 @@ import Footer from "./components/Footer/Footer";
 import MainContent from "./components/MainContent/MainContent";
 import Title from "./components/Title/Title";
 
+import { Analytics } from '@vercel/analytics/react';
+
 export default function Root() {
     return (
         <Html lang="en">
@@ -41,6 +43,7 @@ export default function Root() {
                     </ErrorBoundary>
                 </Suspense>
                 <Scripts />
+                <Analytics />
             </Body>
         </Html>
     );
