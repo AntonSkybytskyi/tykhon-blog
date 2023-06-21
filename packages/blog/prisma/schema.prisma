@@ -35,6 +35,7 @@ model Tag {
   hex       String   @db.VarChar(6)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  enabled   Boolean  @default(false)
 
   @@index([slug])
 }
