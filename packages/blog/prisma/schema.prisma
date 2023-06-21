@@ -31,9 +31,9 @@ model Tag {
   slug      String   @unique
   name      String   @db.VarChar(256)
   hex       String   @db.VarChar(6)
+  enabled   Boolean  @default(false)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  postSlug  String?
 
   @@index([slug])
 }
