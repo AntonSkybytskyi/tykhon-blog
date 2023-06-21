@@ -13,6 +13,7 @@ datasource db {
 }
 
 model Post {
+  id               Int       @id @default(autoincrement())
   slug             String    @unique
   keywords         String    @db.Text
   thumbnail        String?
@@ -28,10 +29,10 @@ model Post {
 }
 
 model Tag {
+  id        Int      @id @default(autoincrement())
   slug      String   @unique
   name      String   @db.VarChar(256)
   hex       String   @db.VarChar(6)
-  enabled   Boolean  @default(false)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
